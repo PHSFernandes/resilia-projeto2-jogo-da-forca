@@ -61,8 +61,66 @@ class Jogador:
             return True
 
     def template(self):
-        # print(f"{self.nome}: {self.palavra}\n")  # Nome do jogador: palavra
+        # print(f"{self.nome}: {self.palavra}\n")
         print(f"Vez de {self.nome}:")
-        print(f"Vidas restantes: {self.vidas}")  # Placeholder - Aqui vai os bonequinhos da forca
+        self.desenha_forca()
         self.mostrar_adivinhacoes()
         print()
+
+    def desenha_forca(self):
+        """Desenho da forca correspondente a cada vida"""
+        if self.vidas == 6:
+            print("  _______     ")
+            print(" |/      |    ")
+            print(" |            ")
+            print(" |            ")
+            print(" |            ")
+            print(" |            ")
+
+        elif self.vidas == 5:
+            print("  _______     ")
+            print(" |/      |    ")
+            print(" |      (_)   ")
+            print(" |            ")
+            print(" |            ")
+            print(" |            ")
+
+        elif self.vidas == 4:
+            print("  _______     ")
+            print(" |/      |    ")
+            print(" |      (_)   ")
+            print(" |       |    ")
+            print(" |       |    ")
+            print(" |            ")
+
+        elif self.vidas == 3:
+            print("  _______     ")
+            print(" |/      |    ")
+            print(" |      (_)   ")
+            print(" |      \|   ")
+            print(" |       |    ")
+            print(" |            ")
+
+        elif self.vidas == 2:
+            print("  _______     ")
+            print(" |/      |    ")
+            print(" |      (_)   ")
+            print(" |      \|/   ")
+            print(" |       |    ")
+            print(" |            ")
+
+        elif self.vidas == 1:
+            print("  _______     ")
+            print(" |/      |    ")
+            print(" |      (_)   ")
+            print(" |      \|/   ")
+            print(" |       |    ")
+            print(" |      /     ")
+
+        elif self.vidas == 0:
+            print("  _______     ")
+            print(" |/      |    ")
+            print(" |      (_)   ")
+            print(" |      \|/   ")
+            print(" |       |    ")
+            print(" |      / \   ")
