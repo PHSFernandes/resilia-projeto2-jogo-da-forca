@@ -61,7 +61,7 @@ class Jogador:
             return True
 
     def template(self):
-        print(f"{self.nome}: {self.palavra}\n")  # Placeholder - nome do jogador: palavra
+        # print(f"{self.nome}: {self.palavra}\n")  # Nome do jogador: palavra
         print(f"Vez de {self.nome}:")
         print(f"Vidas restantes: {self.vidas}")  # Placeholder - Aqui vai os bonequinhos da forca
         self.mostrar_adivinhacoes()
