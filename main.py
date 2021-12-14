@@ -45,46 +45,44 @@ def jogador_sem_vida(jogador_atual, perdedores):
     perdedores.append(jogador_atual)
     time.sleep(2)
 
-print_slow(logo)
+def jogar():
+    print_slow(logo)
+    quantidade_jogadores = seleciona_quantidades_de_jogadores()
+    lista_jogadores = preencher_lista_jogadores(quantidade_jogadores)
+    print(lista_jogadores)
+    time.sleep(1)
+    continua = True
+    lista_perdedores = []
 
-quantidade_jogadores = seleciona_quantidades_de_jogadores()
-
-lista_jogadores = preencher_lista_jogadores(quantidade_jogadores)
-
-print(lista_jogadores)
-time.sleep(1)
-
-continua = True
-lista_perdedores = []
-
-
-for n in range(6):
-    for jogador in lista_jogadores:
-        if jogador not in lista_perdedores:
-            while continua:
-                jogador.responder()
-                if jogador.checar_se_chute_valido():
-                    if jogador.checar_se_acertou():
-                        jogador_acertou(jogador)
-                        if jogador.checar_se_vencedor():
-                            jogador_venceu(jogador)
-                            continua = False
-                            break
+    for n in range(6):
+        for jogador in lista_jogadores:
+            if jogador not in lista_perdedores:
+                while continua:
+                    jogador.responder()
+                    if jogador.checar_se_chute_valido():
+                        if jogador.checar_se_acertou():
+                            jogador_acertou(jogador)
+                            if jogador.checar_se_vencedor():
+                                jogador_venceu(jogador)
+                                continua = False
+                                break
+                            else:
+                                continue
                         else:
-                            continue
+                            jogador_errou(jogador)
                     else:
-                        jogador_errou(jogador)
-                else:
-                    verificar_chute_valido(jogador)
-                    continue
+                        verificar_chute_valido(jogador)
+                        continue
+                    
+                    # Se o jogador perder todas as vidas, é removido do jogo
+                    if jogador.vidas == 0:
+                        jogador_sem_vida(jogador, lista_perdedores)
 
-                # Se o jogador perder todas as vidas, é removido do jogo
-                if jogador.vidas == 0:
-                    jogador_sem_vida(jogador, lista_perdedores)
+                    # Se não houver mais jogadores na partida, o jogo é automaticamente finalizado
+                    if len(lista_jogadores) == len(lista_perdedores):
+                        print("Nenhum jogador venceu")
+                        continua = False
+                        time.sleep(1)
+                    break
 
-                # Se não houver mais jogadores na partida, o jogo é automaticamente finalizado
-                if len(lista_jogadores) == len(lista_perdedores):
-                    print("Nenhum jogador venceu")
-                    continua = False
-                    time.sleep(1)
-                break
+jogar()
