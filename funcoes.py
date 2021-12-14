@@ -23,3 +23,13 @@ def print_slow(str):
 def sorteio_palavra():
     sorteio = random.choice(elementos.lista_palavras).lower()
     return sorteio
+
+
+def seleciona_quantidades_de_jogadores():
+    quantidade_jogadores = input("Quantos jogadores irão participar (2 a 4)? ")
+
+    while quantidade_jogadores.isdigit() is False or int(quantidade_jogadores) > 4 or int(quantidade_jogadores) < 2:
+        screen_clear()
+        quantidade_jogadores = input("Selecione um valor válido (2 a 4): ")
+
+    return int(quantidade_jogadores)

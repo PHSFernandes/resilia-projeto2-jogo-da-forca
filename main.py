@@ -1,18 +1,14 @@
 import time
 from jogadores import Jogador
-from funcoes import print_slow, screen_clear
+from funcoes import print_slow, screen_clear, seleciona_quantidades_de_jogadores
 from elementos import logo
 
 print_slow(logo)
 
-quantidade_jogadores = input("Quantos jogadores irão participar (2 a 4)? ")
-
-while quantidade_jogadores.isdigit() is False or int(quantidade_jogadores) > 4 or int(quantidade_jogadores) < 2:
-    screen_clear()
-    quantidade_jogadores = input("Selecione um valor válido (2 a 4): ")
+quantidade_jogadores = seleciona_quantidades_de_jogadores()
 
 lista_jogadores = []
-for n in range(int(quantidade_jogadores)):
+for n in range(quantidade_jogadores):
     nome = input(f"Escolha o nome do jogador {n + 1}: ").title()
     while nome == "" or nome.isspace():
         nome = input(f"Preencha o nome do jogador {n + 1}: ").title()
