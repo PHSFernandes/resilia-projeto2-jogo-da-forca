@@ -1,16 +1,14 @@
 import time
-import elementos
-import random
 import unidecode
-from funcoes import screen_clear
+from funcoes import screen_clear, sorteio_palavra
 
 
 class Jogador:
-    def __init__(self, nome):
+    def __init__(self, nome): 
         self.nome = nome
         self.vidas = 6
         self.acertos = 0
-        self.palavra = random.choice(elementos.lista_palavras).lower()
+        self.palavra = sorteio_palavra()
         self.adivinhacao = ["_" for _ in self.palavra]
         self.letras_erradas = []
         self.chute = ""

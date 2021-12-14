@@ -1,5 +1,7 @@
 import sys
 import time
+import elementos
+import random
 from os import system, name
 
 
@@ -17,3 +19,7 @@ def print_slow(str):
         sys.stdout.write(letter)
         sys.stdout.flush()
         time.sleep(0.1)
+
+def sorteio_palavra():
+    sorteio = random.choice(elementos.lista_palavras).lower()
+    return sorteio
