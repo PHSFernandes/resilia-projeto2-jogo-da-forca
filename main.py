@@ -40,6 +40,11 @@ def verificar_chute_valido(jogador_atual):
 
     time.sleep(1)
 
+def jogador_sem_vida(jogador_atual, perdedores):
+    print(f"{jogador_atual.nome} está fora do jogo. A palavra era {jogador_atual.palavra.upper()}")
+    perdedores.append(jogador_atual)
+    time.sleep(2)
+
 print_slow(logo)
 
 quantidade_jogadores = seleciona_quantidades_de_jogadores()
@@ -75,9 +80,7 @@ for n in range(6):
 
                 # Se o jogador perder todas as vidas, é removido do jogo
                 if jogador.vidas == 0:
-                    print(f"{jogador.nome} está fora do jogo. A palavra era {jogador.palavra.upper()}")
-                    lista_perdedores.append(jogador)
-                    time.sleep(2)
+                    jogador_sem_vida(jogador, lista_perdedores)
 
                 # Se não houver mais jogadores na partida, o jogo é automaticamente finalizado
                 if len(lista_jogadores) == len(lista_perdedores):
