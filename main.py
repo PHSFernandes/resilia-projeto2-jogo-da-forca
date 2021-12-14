@@ -31,6 +31,15 @@ def jogador_errou(jogador_atual):
     print("Você errou")
     time.sleep(1)
 
+def verificar_chute_valido(jogador_atual):
+    if len(jogador_atual.chute) > 1 or jogador_atual.chute.isalpha() is False:
+        print("Escolha APENAS uma letra!")
+        
+    elif jogador_atual.chute.upper() in jogador_atual.letras_erradas or jogador_atual.chute in jogador_atual.adivinhacao:
+        print("Você já escolheu esta letra. Tente outra.")
+
+    time.sleep(1)
+
 print_slow(logo)
 
 quantidade_jogadores = seleciona_quantidades_de_jogadores()
@@ -61,14 +70,8 @@ for n in range(6):
                     else:
                         jogador_errou(jogador)
                 else:
-                    if len(jogador.chute) > 1 or jogador.chute.isalpha() is False:
-                        print("Escolha APENAS uma letra!")
-                        time.sleep(1)
-                        continue
-                    elif jogador.chute.upper() in jogador.letras_erradas or jogador.chute in jogador.adivinhacao:
-                        print("Você já escolheu esta letra. Tente outra.")
-                        time.sleep(1)
-                        continue
+                    verificar_chute_valido(jogador)
+                    continue
 
                 # Se o jogador perder todas as vidas, é removido do jogo
                 if jogador.vidas == 0:
