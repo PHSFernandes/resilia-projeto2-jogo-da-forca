@@ -18,6 +18,11 @@ def jogador_acertou(jogador_atual):
     jogador_atual.substituir_adivinhacao_por_letra()
     jogador_atual.acertos = len(jogador_atual.palavra) - jogador_atual.adivinhacao.count("_")
 
+def jogador_venceu(jogador_atual):
+    screen_clear()
+    jogador_atual.template()
+    print(f"{jogador_atual.nome} venceu o jogo, parabéns!")
+    time.sleep(1)
 
 print_slow(logo)
 
@@ -41,10 +46,7 @@ for n in range(6):
                     if jogador.checar_se_acertou():
                         jogador_acertou(jogador)
                         if jogador.checar_se_vencedor():
-                            screen_clear()
-                            jogador.template()
-                            print(f"{jogador.nome} venceu o jogo, parabéns!")
-                            time.sleep(1)
+                            jogador_venceu(jogador)
                             continua = False
                             break
                         else:
