@@ -1,6 +1,8 @@
 import time
 from jogadores import Jogador
-from funcoes import screen_clear
+from funcoes import print_slow, screen_clear
+from elementos import logo
+print_slow(logo)
 
 quantidade_jogadores = input("Quantos jogadores irão participar (2 a 4)? ")
 
