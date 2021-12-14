@@ -3,17 +3,22 @@ from jogadores import Jogador
 from funcoes import print_slow, screen_clear, seleciona_quantidades_de_jogadores
 from elementos import logo
 
+def preencher_lista_jogadores(quantidade):
+    lista_jogadores = []
+    for n in range(quantidade):
+        nome = input(f"Escolha o nome do jogador {n + 1}: ").title()
+        while nome == "" or nome.isspace():
+            nome = input(f"Preencha o nome do jogador {n + 1}: ").title()
+        else:
+            lista_jogadores.append(Jogador(nome))
+
+    return lista_jogadores
+
 print_slow(logo)
 
 quantidade_jogadores = seleciona_quantidades_de_jogadores()
 
-lista_jogadores = []
-for n in range(quantidade_jogadores):
-    nome = input(f"Escolha o nome do jogador {n + 1}: ").title()
-    while nome == "" or nome.isspace():
-        nome = input(f"Preencha o nome do jogador {n + 1}: ").title()
-    else:
-        lista_jogadores.append(Jogador(nome))
+lista_jogadores = preencher_lista_jogadores(quantidade_jogadores)
 
 print(lista_jogadores)
 time.sleep(1)
