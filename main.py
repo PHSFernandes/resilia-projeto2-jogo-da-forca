@@ -14,6 +14,11 @@ def preencher_lista_jogadores(quantidade):
 
     return lista_jogadores
 
+def jogador_acertou(jogador_atual):
+    jogador_atual.substituir_adivinhacao_por_letra()
+    jogador_atual.acertos = len(jogador_atual.palavra) - jogador_atual.adivinhacao.count("_")
+
+
 print_slow(logo)
 
 quantidade_jogadores = seleciona_quantidades_de_jogadores()
@@ -26,6 +31,7 @@ time.sleep(1)
 continua = True
 lista_perdedores = []
 
+
 for n in range(6):
     for jogador in lista_jogadores:
         if jogador not in lista_perdedores:
@@ -33,8 +39,7 @@ for n in range(6):
                 jogador.responder()
                 if jogador.checar_se_chute_valido():
                     if jogador.checar_se_acertou():
-                        jogador.substituir_adivinhacao_por_letra()
-                        jogador.acertos = len(jogador.palavra) - jogador.adivinhacao.count("_")
+                        jogador_acertou(jogador)
                         if jogador.checar_se_vencedor():
                             screen_clear()
                             jogador.template()
