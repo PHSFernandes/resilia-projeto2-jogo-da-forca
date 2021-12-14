@@ -24,6 +24,13 @@ def jogador_venceu(jogador_atual):
     print(f"{jogador_atual.nome} venceu o jogo, parabéns!")
     time.sleep(1)
 
+def jogador_errou(jogador_atual):
+    jogador_atual.vidas -= 1
+    screen_clear()
+    jogador_atual.template()
+    print("Você errou")
+    time.sleep(1)
+
 print_slow(logo)
 
 quantidade_jogadores = seleciona_quantidades_de_jogadores()
@@ -52,11 +59,7 @@ for n in range(6):
                         else:
                             continue
                     else:
-                        jogador.vidas -= 1
-                        screen_clear()
-                        jogador.template()
-                        print("Você errou")
-                        time.sleep(1)
+                        jogador_errou(jogador)
                 else:
                     if len(jogador.chute) > 1 or jogador.chute.isalpha() is False:
                         print("Escolha APENAS uma letra!")
